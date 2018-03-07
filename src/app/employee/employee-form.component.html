@@ -1,0 +1,69 @@
+<form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
+  <div class="form-group">
+    <label for="fName">First Name:</label>
+      <input type="text" class="form-control" name="fName" [ngModel]="employee.fName" required #ename="ngModel" minlength="6">
+      <div class="alert alert-danger" *ngIf="ename.touched">
+        <div  *ngIf="ename.errors?.required">
+          Name is a required field
+        </div>
+        <div  *ngIf="ename.errors?.minlength">
+            Please enter minimum of 6 characters
+        </div>
+      </div>
+  </div>
+  
+<div class="form-group">
+          <label for="mName">Middle Name:</label>
+            <input type="text" class="form-control" name="mName" [ngModel]="employee.mName" (ngModelChange)="employee.mName=$event">
+</div>
+
+<div class="form-group">
+    <label for="lName">Last Name:</label>
+      <input type="text" class="form-control" name="lName" [ngModel]="employee.lName" (ngModelChange)="employee.lName=$event">
+</div>
+
+<div class="form-group">
+<label class="radio-inline" *ngFor="let gen of getkeys()">
+  <input type="radio" name="gender" [(ngModel)]="employee.gender" [value]="gen">{{gen}}
+</label>
+</div>
+
+<div class="form-group">
+    <label for="age">Age:</label>
+      <input type="text" class="form-control" name="age" [(ngModel)]="employee.age">
+</div>
+
+<div class="form-group">
+    <label for="salary">Salary:</label>
+      <input type="text" class="form-control" name="salary" [(ngModel)]="employee.salary">
+</div>
+
+<div ngModelGroup="address">
+  <div class="form-group">
+      <label for="city">City:</label>
+        <input type="text" class="form-control" [value]="employee.address.city" (input)="employee.address.city=$event.target.value">
+  </div>
+  <div class="form-group">
+      <label for="state">State:</label>
+        <input type="text" class="form-control" [value]="employee.address.state" (input)="employee.address.state=$event.target.value">
+  </div>
+  <div class="form-group">
+      <label for="street">Street:</label>
+        <input type="text" class="form-control" name="street" [value]="employee.address.street" (input)="employee.address.street=$event.target.value">
+  </div>
+  <div class="form-group">
+      <label for="zipcode">Zip Code:</label>
+        <input type="text" class="form-control" name="zipcode" [ngModel]="employee.address.zipcode" required #ecode="ngModel" minlength="5">
+        <div class="alert alert-danger" *ngIf="ecode.touched">
+          <div *ngIf="ecode.errors?.required">
+            Zipcode is a required field
+          </div>
+          <div *ngIf="ecode.errors?.minlength">
+            Please enter minimum of 5 characters
+          </div>
+        </div>
+  </div>
+</div>
+<div class="form-group"><button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Submit</button></div>
+
+</form>

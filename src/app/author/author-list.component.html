@@ -1,0 +1,21 @@
+
+<table class="table table-striped">
+    <tr>
+      <th>Author Id</th>
+      <th> Full Name </th>
+      <th> Gender </th>
+      <th>Age</th>
+      <th>Edit Info</th>
+      <th>Delete Info</th>
+    </tr>
+    <tr *ngFor = "let auth of authorArray">
+      <td [ngStyle]="{'background-color':auth.newAuthor?'red':'blue','color':auth.newAuthor?'black':'white'}">{{auth.id}}</td>
+      <td>{{toUpperCase(auth.fName+' '+auth.mName+' '+auth.lName)}}</td>
+      <td>{{auth.gender}}</td>
+      <td>{{auth.age}}</td>
+      <td><button type="button" class="btn btn-primary btn-sm" (click)="handleEdit(auth.id)">Edit</button></td>
+      <td><button type="button" class="btn btn-danger btn-sm" (click)="handleDelete(auth.id)">Delete</button></td>
+    </tr>
+  </table>
+  <div><button type="button" class="btn btn-primary" (click)="routeMeToFormPage()">Add New Author</button></div>
+  

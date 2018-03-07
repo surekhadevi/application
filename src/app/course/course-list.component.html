@@ -1,0 +1,21 @@
+
+
+<table class="table table-striped">
+    <tr>
+      <th> Course Id </th>
+      <th> Course Name </th>
+      <th> Skill Level </th>
+      <th>Price</th>
+      <th>Edit Info</th>
+      <th>Delete Info</th>
+    </tr>
+    <tr *ngFor = "let crse of courses">
+      <td [ngStyle]="{'background-color':crse.newCourse?'red':'blue','color':crse.newCourse?'black':'white'}">{{crse.id}}</td>
+      <td [ngClass]="{'new':crse.newCourse}">{{crse.name}}</td>
+      <td>{{crse.skilllevel}}</td>
+      <td>{{crse.price}}</td>
+      <td><button type="button" class="btn btn-primary btn-sm" (click)="handleEdit(crse.id)">Edit</button></td>
+      <td><button type="button" class="btn btn-danger btn-sm" (click)="handleDelete(crse.id)">Delete</button></td>
+    </tr>
+  </table>
+  <div><button type="button" class="btn btn-primary" (click)="RouteMeToFormPage()">Add New Course</button></div>

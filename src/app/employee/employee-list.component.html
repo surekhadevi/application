@@ -1,0 +1,30 @@
+
+<table class="table table-striped">
+  <tr>
+    <th> Emp Id </th>
+    <th> Full Name </th>
+    <th> Gender </th>
+    <th>Age</th>
+    <th> Salary </th>
+    <th> City </th>
+    <th> State </th>
+    <th>Street</th>
+    <th> Zipcode </th>
+    <th>Edit Info</th>
+    <th>Delete Info</th>
+  </tr>
+  <tr *ngFor = "let emp of employees">
+    <td [ngStyle]="{'background-color':emp.newEmp?'red':'blue','color':emp.newEmp?'black':'white'}">{{emp.id}}</td>
+    <td [ngClass]="{'new':emp.newEmp}">{{toUpperCase(emp.fName+' '+emp.mName+' '+emp.lName)}}</td>
+    <td>{{emp.gender}}</td>
+    <td>{{emp.age}}</td>
+    <td>{{emp.salary}}</td>
+    <td>{{emp.address.city}}</td>
+    <td>{{emp.address.state}}</td>
+    <td>{{emp.address.street}}</td>
+    <td>{{emp.address.zipcode}}</td>
+    <td><button class="btn btn-primary btn-sm" type="button" (click)="handleEdit(emp.id)">Edit</button></td>
+    <td><button class="btn btn-danger btn-sm" type="button" (click)="handleDelete(emp.id)">Delete</button></td>
+  </tr>
+</table>
+<div><button type="button" class="btn btn-primary" (click)="routeMeToAddPage()">Add New Employee</button></div>

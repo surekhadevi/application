@@ -1,0 +1,37 @@
+<form (ngSubmit)="handleSubmit()" [formGroup]="auForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" formControlName="name">
+    <div *ngIf="aName.pending">
+      Checking for uniqueness
+    </div>
+    <div class="alert alert-danger" *ngIf="aName.touched">
+      <div  *ngIf="aName.errors?.required">
+        Name is a required field
+      </div>
+      <div  *ngIf="aName.errors?.minlength">
+          Please enter minimum of 5 characters
+      </div>
+      <div  *ngIf="aName.errors?.needsAdmin">
+        Name should start with admin
+      </div>
+      <div  *ngIf="aName.errors?.nameAlreadyTaken">
+          Name exists. Please choose some other name
+        </div>
+    </div>
+  </div>
+  <div formGroupName="address">
+      <div class="form-group">
+          <label for="city">City</label>
+            <input type="text" class="form-control" formControlName="city">
+      </div>
+    </div>
+    <!-- <div formArrayName="hobbies">
+      <div class="form-group">
+          <label for="hobbies">Hobbies</label>
+          <button class="btn btn-primary btn-sm" type="button" (click)="addHobby()">Add</button>
+            <input type="text" class="form-control" [formControlName]="i" *ngFor="let h of getHobbies(); let i=index">
+      </div>
+    </div> -->
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

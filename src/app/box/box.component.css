@@ -1,0 +1,15 @@
+.red{
+    color:red;
+    font-style: italic;
+    text-align: center;
+}
+.blue{
+    color:blue;
+    /* font-style: italic;
+    text-align: center; */
+}
+.gray{
+    color:gray;
+    /* font-style: italic;
+    text-align: center; */
+}

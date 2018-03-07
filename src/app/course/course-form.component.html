@@ -1,0 +1,20 @@
+<form>
+  <div class="form-group">
+    <label for="name">Course Name:</label>
+      <input type="text" class="form-control" name="name" [ngModel]="course.name" (ngModelChange)="course.name=$event">
+  </div>
+
+<div class="form-group">
+  <label class="radio-inline" *ngFor="let skill of getkeys()">
+    <input type="radio" name="skilllevel" [(ngModel)]="course.skilllevel" [value]="skill">{{skill}}
+  </label>
+  </div>
+
+<div class="form-group">
+    <label for="price">Price:</label>
+      <input type="text" class="form-control" name="price" [ngModel]="course.price" (ngModelChange)="course.price=$event">
+</div>
+
+<div class="form-group"><button type="button" class="btn btn-primary" (click)="RouteMeToListPage()">Submit</button></div>
+
+</form>
